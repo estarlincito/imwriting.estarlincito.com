@@ -1,0 +1,22 @@
+// {
+//   "version": "0.2.0",
+//   "configurations": [
+//     {
+//       "name": "Attach to Next.js",
+//       "type": "node",
+//       "request": "attach",
+//       "port": 9230,
+//       "skipFiles": ["<node_internals>/**"],
+//       "outFiles": [
+//         "${workspaceFolder}/.next/**/*.js",
+//         "${workspaceFolder}/**/*.ts", // Add TypeScript files here
+//         "${workspaceFolder}/**/*.tsx"
+//       ],
+//       "sourceMaps": true
+//     }
+//   ]
+// }
+
+
+
+// "dev": "NODE_OPTIONS='--inspect' next dev",
