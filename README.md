@@ -1,8 +1,8 @@
-# 🌟 About Imwrating
+# 🌟 About Imwriting
 
-> Link: [**imwrating.estarlincito.com**](https://imwrating.estarlincito.com)
+> Link: [**imwriting.estarlincito.com**](https://imwriting.estarlincito.com)
 
-Imwrating is a blog that delves into philosophy, psychology, web development, technology, and more. It offers reflections, analyses, and discussions on how technology is reshaping the way we think, interact with the world, and its profound impact on our psychology and emotional well-being.
+Imwriting is a blog that delves into philosophy, psychology, web development, technology, and more. It offers reflections, analyses, and discussions on how technology is reshaping the way we think, interact with the world, and its profound impact on our psychology and emotional well-being.
 
 ---
 
