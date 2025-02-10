@@ -1,2 +1,2 @@
 export type LinkType = { query: string; stop: boolean };
-export type PageType = string | undefined;
+export type PageType = string | undefined | 'off';

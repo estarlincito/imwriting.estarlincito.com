@@ -1,49 +1,28 @@
-'use client';
-import DarkmodeToggle from '@/components/ui/darkmode-toggle';
-import css from '@/lib/css';
-import { Flex } from '@radix-ui/themes';
 import React from 'react';
+import { Box, Button, Flex, Link, Separator } from '@radix-ui/themes';
 import Brand from './brand';
-import HireMeLink from './hiremelink';
-import MenuToggle from './menu-toggle';
-import TwitterLink from './twitterlink';
-import Ul from './ul';
-
-const Styled = {
-  flex: css({
-    backgroundColor: 'var(--gray-1)',
-    zIndex: 1,
-    userSelect: 'none',
-    borderBottom: '1px solid var(--gray-5)',
-  }),
-};
+import Menu from './menu';
 
 const Navbar: React.FC = () => {
   return (
-    <Flex
-      asChild
-      justify='between'
-      position='fixed'
-      top='0'
-      bottom='0'
-      right='0'
-      left='0'
-      height='70px'
-      style={Styled.flex}
-    >
-      <nav>
-        <Ul m='l'>
-          <MenuToggle />
+    <Box>
+      <Flex
+        direction='row'
+        justify={{ initial: 'center', sm: 'between' }}
+        p='5'
+      >
+        <Box display={{ initial: 'none', sm: 'block' }}>
           <Brand />
-        </Ul>
-
-        <Ul m='r'>
-          <DarkmodeToggle />
-          <HireMeLink />
-          <TwitterLink />
-        </Ul>
-      </nav>
-    </Flex>
+        </Box>
+        <Menu />
+        <Box display={{ initial: 'none', sm: 'block' }}>
+          <Link href='https://ko-fi.com/estarlincito' target='_blank'>
+            <Button variant='classic'>Donate</Button>
+          </Link>
+        </Box>
+      </Flex>
+      <Separator size='4' />
+    </Box>
   );
 };
 

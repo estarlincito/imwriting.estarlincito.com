@@ -1,3 +1,4 @@
+import handleError from '@/lib/handle-error';
 import { Link } from '@radix-ui/themes';
 import React, { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 type Props = DetailedHTMLProps<
@@ -8,7 +9,7 @@ type Props = DetailedHTMLProps<
 const A: React.FC<Props> = ({ children, href }) => {
   const target = href!.startsWith('/');
   if (href!.includes('http://')) {
-    throw new Error("You have 'http://' please change to 'https://'");
+    handleError("You have 'http://' please change to 'https://'");
   }
 
   return (

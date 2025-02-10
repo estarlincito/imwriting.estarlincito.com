@@ -1,5 +1,6 @@
 'use client';
 import apiFetch from '@/lib/apiFetch';
+import handleError from '@/lib/handle-error';
 import Quote from '@/types/quote';
 import { useEffect, useState } from 'react';
 
@@ -35,14 +36,10 @@ const useQuotes = (): Return => {
         // other days will be random
         const date = new Date();
         const day = date.getDay();
-        const n1 = 1;
-        const n3 = 3;
-        const n5 = 5;
-        const n7 = 7;
-        const item = [n1, n3, n5, n7].includes(day) ? last : _random;
+        const item = [1, 3, 5, 7].includes(day) ? last : _random;
         setQuote(item);
       })
-      .catch(() => new Error('Error fetching quotes:'));
+      .catch(() => handleError('Error fetching quotes:'));
   }, []);
 
   return { quote, random, quotes };

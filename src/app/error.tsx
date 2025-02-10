@@ -1,7 +1,6 @@
 'use client';
 import Wrapper from '@/components/layout/wrapper';
 import IconButton from '@/components/ui/Icon-button';
-import CONTACT from '@/constants/contact';
 
 import {
   Button,
@@ -21,8 +20,9 @@ const Error: React.FC<Props> = ({ error, reset }) => {
     <Container size='1'>
       <Wrapper align='center'>
         <Flex direction='column' gap='2'>
-          <Heading size='9'>Oops!</Heading>
-          <br />
+          <Heading size='9' mb='2'>
+            Oops!
+          </Heading>
 
           <Heading size='5'>{error.message}</Heading>
 
@@ -41,9 +41,9 @@ const Error: React.FC<Props> = ({ error, reset }) => {
               <Strong>Try again</Strong>
             </Button>
 
-            <Link target='_self' href={CONTACT.route}>
+            <Link target='_self' href='https://estarlincito.com/contact'>
               <IconButton variant='ghost'>
-                <Strong>{CONTACT.title}</Strong>
+                <Strong>Contact</Strong>
               </IconButton>
             </Link>
           </Flex>

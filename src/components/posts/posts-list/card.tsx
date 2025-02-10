@@ -19,19 +19,14 @@ const Styled = {
 };
 
 const Card: React.FC<Blog> = (props) => {
-  const {
-    slugs: { post },
-    title,
-    author,
-    cover,
-    publishedAt,
-  } = props;
+  const { meta, title, author, cover, publishedAt } = props;
+  const { route } = meta.post;
 
   return (
     <CardRadix variant='surface' style={Styled.card}>
       <Box height='15rem' asChild>
         <figure>
-          <Link href={post} target='_self'>
+          <Link href={route} target='_self'>
             <Image src={cover} alt={title} />
           </Link>
         </figure>
@@ -39,7 +34,7 @@ const Card: React.FC<Blog> = (props) => {
 
       <Grid gap='1' height='7rem' p='3' asChild>
         <figcaption>
-          <Link href={post} size='3' target='_self' weight='bold' color='gray'>
+          <Link href={route} size='3' target='_self' weight='bold' color='gray'>
             {title}
           </Link>
 

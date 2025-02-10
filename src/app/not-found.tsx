@@ -25,7 +25,7 @@ const NotFound: React.FC = () => {
           <br />
           <Text>
             {line1}&nbsp;
-            <Link target='_self' href='http://estarlincito.com'>
+            <Link target='_self' href='/'>
               <Strong>{HOME.title}</Strong>
             </Link>
             &nbsp;{line2}

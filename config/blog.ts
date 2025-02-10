@@ -1,4 +1,4 @@
-import { FieldDefs, defineDocumentType } from 'contentlayer/source-files';
+import { type FieldDefs, defineDocumentType } from 'contentlayer/source-files';
 import { computedFields } from './computedFields';
 
 const fields: FieldDefs = {

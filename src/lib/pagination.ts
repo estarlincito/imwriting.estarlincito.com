@@ -14,29 +14,26 @@ type Pagination = <T>(page: PageType, data: T[]) => Return<T>;
 
 const pagination: Pagination = (page, data) => {
   const length = data.length;
-  const n0 = 0;
-  const n1 = 1;
-  const n6 = 6;
 
   if (!page || isNaN(parseInt(page))) {
     return {
-      data: data.slice(n0, n6),
-      next: { query: `?page=2`, stop: data.length < n6 },
+      data: data.slice(0, 6),
+      next: { query: `?page=2`, stop: data.length < 6 },
       prev: { query: '#', stop: true },
-      start: n1,
-      end: Math.min(n6, data.length),
+      start: 1,
+      end: Math.min(6, data.length),
       length,
     };
   }
 
   const parsedPage = parseInt(page);
 
-  if (parsedPage <= n0) {
+  if (parsedPage <= 0) {
     notFound();
   }
 
-  const start = (parsedPage - n1) * n6;
-  const end = Math.min(start + n6, length);
+  const start = (parsedPage - 1) * 6;
+  const end = Math.min(start + 6, length);
 
   if (start >= end) {
     notFound();
@@ -45,14 +42,14 @@ const pagination: Pagination = (page, data) => {
   return {
     data: data.slice(start, end),
     next: {
-      query: `?page=${parsedPage + n1}`,
+      query: `?page=${parsedPage + 1}`,
       stop: end === length,
     },
     prev: {
-      query: parsedPage > n1 ? `?page=${parsedPage - n1}` : '#',
-      stop: parsedPage <= n1,
+      query: parsedPage > 1 ? `?page=${parsedPage - 1}` : '#',
+      stop: parsedPage <= 1,
     },
-    start: start + n1,
+    start: start + 1,
     end,
     length,
   };

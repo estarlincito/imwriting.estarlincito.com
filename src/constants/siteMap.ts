@@ -1,5 +1,5 @@
 import ABOUT from './about';
-import CONTACT from './contact';
+import ARTICLES from './articles';
 import HOME from './home';
 
 type Return = {
@@ -14,7 +14,7 @@ const page: Page = (label, route) => ({ label, route });
 const SITEMAP = [
   page(HOME.title, HOME.route),
   page(ABOUT.title, ABOUT.route),
-  page(CONTACT.title, CONTACT.route),
+  page(ARTICLES.title, ARTICLES.route),
 ];
 
 export default SITEMAP;

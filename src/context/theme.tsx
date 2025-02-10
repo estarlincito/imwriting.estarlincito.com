@@ -5,7 +5,7 @@ import React from 'react';
 
 const AppThemeProvider: React.FC<ChildrenProps> = ({ children }) => {
   return (
-    <ThemeProvider attribute='class' defaultTheme='light'>
+    <ThemeProvider attribute='class' defaultTheme='system'>
       {children}
     </ThemeProvider>
   );

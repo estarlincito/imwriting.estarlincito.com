@@ -10,7 +10,6 @@ const Styled = { link: css({ display: 'inline-flex', alignItems: 'center' }) };
 interface Props {
   prev: LinkType;
   next: LinkType;
-  route: string;
   length: number;
   start: number;
   end: number;
@@ -18,7 +17,7 @@ interface Props {
 }
 
 const Pagination: React.FC<Props> = (props) => {
-  const { route, next, prev, length, start, end, title } = props;
+  const { next, prev, length, start, end, title } = props;
   return (
     <Flex gapX='2'>
       <Box>
@@ -31,7 +30,7 @@ const Pagination: React.FC<Props> = (props) => {
         </Text>
 
         {!prev.stop ? (
-          <Link href={route + prev.query} style={Styled.link}>
+          <Link href={prev.query} style={Styled.link}>
             <IconButton size='1' variant='ghost'>
               <ChevronLeftIcon width='18' height='18' />
             </IconButton>
@@ -41,7 +40,7 @@ const Pagination: React.FC<Props> = (props) => {
         )}
 
         {!next.stop ? (
-          <Link href={route + next.query} style={Styled.link}>
+          <Link href={next.query} style={Styled.link}>
             <IconButton size='1' variant='ghost'>
               <ChevronRightIcon width='18' height='18' />
             </IconButton>

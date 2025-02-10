@@ -1,5 +1,6 @@
 'use client';
 import { CollapseContext } from '@/context/collapse';
+import handleError from '@/lib/handle-error';
 import { useContext } from 'react';
 
 type Return = { collapse: boolean; togleCollapse: () => void };
@@ -8,7 +9,7 @@ const useCollapse = (): Return => {
   const collapseContext = useContext(CollapseContext);
 
   if (collapseContext === undefined) {
-    throw new Error('Check if CollapseContext code is corret');
+    handleError('Check if CollapseContext code is corret');
   }
 
   const { collapse, setCollapse } = collapseContext;

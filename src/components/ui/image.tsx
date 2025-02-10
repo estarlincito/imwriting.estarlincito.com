@@ -17,11 +17,8 @@ interface Props {
   alt: string;
 }
 const Image: React.FC<Props> = ({ src, alt }) => {
-  const n10 = 10;
-  const n16 = 16;
-
   return (
-    <AspectRatio ratio={n16 / n10}>
+    <AspectRatio ratio={16 / 10}>
       <img src={src} alt={alt} style={Styled.img} />
     </AspectRatio>
   );

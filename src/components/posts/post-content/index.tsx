@@ -19,7 +19,7 @@ const PostContent: React.FC<Blog> = (props) => {
     coverAlt,
     readingTime,
     summary,
-    slugs,
+    meta,
     body,
     author,
     avathar,
@@ -30,8 +30,8 @@ const PostContent: React.FC<Blog> = (props) => {
     <Wrapper align='start'>
       <Breadcrumb
         slug={[
-          { title: category, route: slugs.cat },
-          { title: subcategory, route: slugs.sub },
+          { title: category, route: meta.cat.route },
+          { title: subcategory, route: meta.sub.route },
         ]}
       />
 
@@ -40,7 +40,7 @@ const PostContent: React.FC<Blog> = (props) => {
       <Image src={cover} alt={coverAlt} />
       <Author author={author} avathar={avathar} updated={updated} />
       <Post doc={body.code} />
-      <Share category={category} summary={summary} url={slugs.post} />
+      <Share category={category} summary={summary} url={meta.post.route} />
     </Wrapper>
   );
 };

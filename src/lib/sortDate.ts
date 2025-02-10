@@ -3,7 +3,7 @@ import { Blog } from 'contentlayer/generated';
 const sortByDate = (posts: Blog[]): Blog[] => {
   return posts.sort(
     (a, b) =>
-      new Date(b.publishedAt).valueOf() - new Date(a.publishedAt).valueOf()
+      new Date(b.publishedAt).valueOf() - new Date(a.publishedAt).valueOf(),
   );
 };
 

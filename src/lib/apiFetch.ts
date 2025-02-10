@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 type Body = globalThis.BodyInit | null | undefined;
 
 interface RequestConfig {
@@ -24,14 +25,10 @@ const apiFetch: Props = async ({ url, body, method }) => {
     },
   };
 
-  try {
-    const rest = await fetch(url, init);
-    const data = (await rest.json()) as unknown;
+  const rest = await fetch(url, init);
+  const data = (await rest.json()) as unknown;
 
-    return { data };
-  } catch {
-    throw new Error(`We’re currently experiencing an issue with our server.`);
-  }
+  return { data };
 };
 
 export default apiFetch;

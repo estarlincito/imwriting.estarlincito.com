@@ -13,7 +13,7 @@
 - `pnpm outdated` – List outdated dependencies.
 - `pnpm update` – Update dependencies to their latest versions.
 - `pnpm audit` – Audit for vulnerabilities.
-- `pnpm ts-prune` - Check unnecessary files.
+- `pnpm find-deadcode` - Check unnecessary files.
 - `pnpm ls --depth 0` - Check dependencies.
 
 ---
@@ -24,6 +24,4 @@ To clear the cache, run the following commands:
 
 ```bash
 rm -rf .next
-rm -rf node_modules
-rm -rf pnpm-lock.yaml
 ```

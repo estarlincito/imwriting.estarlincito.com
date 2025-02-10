@@ -1,7 +1,5 @@
 import Footer from '@/components/layout//footer';
-import Navbar from '@/components/layout//navbar';
-import Collapse from '@/components/layout/collapse';
-import Opacity from '@/components/opacity';
+import Navbar from '@/components/layout/navbar';
 import { CollapseProvider } from '@/context/collapse';
 import AppThemeProvider from '@/context/theme';
 import Toaster from '@/lib/toaster';
@@ -17,13 +15,12 @@ const RootLayout: React.FC<Props> = (props) => {
       <body>
         <Theme accentColor='sky' radius='full'>
           <CollapseProvider>
-            <Opacity />
-            <AppThemeProvider>
-              <Navbar />
-              <Collapse />
-            </AppThemeProvider>
+            {/* <Opacity /> */}
+            <Navbar />
             {props.children}
-            <Footer />
+            <AppThemeProvider>
+              <Footer />
+            </AppThemeProvider>
           </CollapseProvider>
         </Theme>
 

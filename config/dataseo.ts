@@ -219,14 +219,15 @@ class Doc {
   };
 }
 
-const seo = (prop: string) => {
-  const doc = Doc[prop as Content];
+const dataseo = (title: string, route: string) => {
+  const doc = { title, route, ...Doc[title as Content] };
 
   if (doc === undefined) {
+    // eslint-disable-next-line safeguard/no-raw-error
     throw new Error('This properties not fount on descriptions');
   }
 
   return doc;
 };
 
-export default seo;
+export default dataseo;

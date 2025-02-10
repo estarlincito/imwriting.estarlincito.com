@@ -1,14 +1,30 @@
-import HOME from '@/constants/home';
-import { Link, Text } from '@radix-ui/themes';
+import { Box, Flex, Link, Strong } from '@radix-ui/themes';
 import React from 'react';
+import Image from 'next/image';
 
 const Brand: React.FC = () => {
   return (
-    <Link href='/' target='_self'>
-      <Text as='span' ml='1' size={{ md: '7' }} weight='bold'>
-        {HOME.title}
-      </Text>
-    </Link>
+    <Box width='150px'>
+      <Flex
+        asChild
+        direction='row'
+        align='center'
+        gapX='2'
+        width='40px'
+        height='40px'
+      >
+        <Link href='/'>
+          <Image
+            width={100}
+            height={100}
+            src='/assets/favicons/android-chrome-512x512.png'
+            alt='Logo'
+            style={{ backgroundColor: 'var(--sky-8)', borderRadius: '100%' }}
+          />
+          <Strong>Imwrating</Strong>
+        </Link>
+      </Flex>
+    </Box>
   );
 };
 

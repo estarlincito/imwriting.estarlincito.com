@@ -1,94 +1,50 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { FlatCompat } from '@eslint/eslintrc';
+import safeguard from 'eslint-plugin-safeguard';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
-
-const eslintConfig = [
-  ...compat.config({
-    env: {
-      es2020: true,
-      browser: true,
-      node: true,
-    },
-
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      project: './tsconfig.json',
-    },
-    settings: {
-      'import/resolver': {
-        typescript: true,
-        node: true,
-      },
-    },
-
+    baseDirectory: process.cwd(),
+  }),
+  oldConfig = compat.config({
     extends: [
       'next',
-      'eslint:recommended',
       'next/typescript',
       'next/core-web-vitals',
+      //'plugin:import/typescript',
       'plugin:react/recommended',
-      'plugin:@typescript-eslint/recommended',
-      'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      'plugin:@next/next/recommended',
       'plugin:import/recommended',
-      'plugin:import/typescript',
+      'plugin:prettier/recommended',
     ],
+  });
 
-    parser: '@typescript-eslint/parser',
+/** @type {import('eslint').ESLint.FlatConfig[]} */
+const config = [
+  js.configs.recommended,
+  ...oldConfig,
 
-    plugins: ['@typescript-eslint', 'unused-imports', 'react', 'import'],
+  {
+    plugins: { safeguard, 'unused-imports': unusedImports },
 
     rules: {
-      // 'no-null': 'warn', // not in eslint
-      // 'consistent-object-methods': 'error', // not in eslint
-
-      ///
-      '@typescript-eslint/no-unsafe-assignment': 'error',
-      '@typescript-eslint/no-unsafe-member-access': 'error',
-      '@typescript-eslint/no-unsafe-call': 'error',
+      'no-console': 'warn',
+      'safeguard/no-raw-error': 'warn',
+      'safeguard/trycatch-ensurer': 'off',
+      'prefer-arrow-callback': 'error', //*
+      'prefer-template': 'error', //*
+      'max-len': ['off', { code: 80 }],
+      'object-shorthand': 'error',
+      'no-else-return': 'error',
+      'no-debugger': 'warn',
+      'react/react-in-jsx-scope': 'error',
+      'no-unused-labels': 'error',
       'no-duplicate-imports': 'error',
       'no-var': 'error',
-      'prefer-template': 'error',
       'no-undef': 'error',
       'consistent-return': 'error',
       'no-unreachable': 'error',
       eqeqeq: 'error',
-      '@typescript-eslint/explicit-module-boundary-types': 'warn',
-      '@typescript-eslint/no-explicit-any': 'error',
-      'max-len': ['off', { code: 80 }],
-      'object-shorthand': 'error',
-      'no-else-return': 'error',
-      'no-console': 'warn',
-      'no-debugger': 'warn',
-      'react/react-in-jsx-scope': 'error',
-      'no-unused-labels': 'error',
-      'unused-imports/no-unused-imports': 'warn',
-      'import/no-unused-modules': [
-        'error',
-        {
-          unusedExports: false,
-          missingExports: true,
-        },
-      ],
-      'no-magic-numbers': [
-        'warn',
-        {
-          ignore: [0, 1],
-        },
-      ],
+      'unused-imports/no-unused-imports': 'error',
 
       'unused-imports/no-unused-vars': [
         'warn',
@@ -100,7 +56,7 @@ const eslintConfig = [
         },
       ],
     },
-  }),
+  },
 ];
 
-export default eslintConfig;
+export default config;

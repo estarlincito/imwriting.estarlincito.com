@@ -6,7 +6,7 @@ const Toaster = dynamic(
     const { Toaster } = await import('react-hot-toast');
     return Toaster;
   },
-  { ssr: false }
+  { ssr: false },
 );
 
 export default Toaster;

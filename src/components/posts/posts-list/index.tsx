@@ -10,10 +10,9 @@ import Pagination from './pagination';
 interface Props {
   posts: Blog[];
   page: PageType;
-  route: string;
 }
 
-const PostsList: React.FC<Props> = ({ posts, page, route }) => {
+const PostsList: React.FC<Props> = ({ posts, page }) => {
   const _posts = sortByDate(posts);
   const { data, next, prev, start, end, length } = pagination(page, _posts);
 
@@ -28,15 +27,16 @@ const PostsList: React.FC<Props> = ({ posts, page, route }) => {
       </Grid>
 
       <Box m='5'>
-        <Pagination
-          route={route}
-          next={next}
-          prev={prev}
-          start={start}
-          end={end}
-          length={length}
-          title={'Articles'}
-        />
+        {page !== 'off' && (
+          <Pagination
+            next={next}
+            prev={prev}
+            start={start}
+            end={end}
+            length={length}
+            title={'Articles'}
+          />
+        )}
       </Box>
     </Box>
   );

@@ -1,17 +1,30 @@
-import { ComputedFields } from 'contentlayer/source-files';
+import { type ComputedFields } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
-import seo from './seo';
-import Content from './types/categories';
+import dataseo from './dataseo';
 
 const prop = `{
-    summary: string;
-    img: {
-        url: string;
-        alt: string;
-    };
+  title: string;
+  route: string;
+  summary: string;
+  img: {
+    url: string;
+    alt: string;
+  };
 }`;
 
-export const Blogseo = `{
+export const meta = `{
+  post: {
+    title: string;
+    summary: string;
+    publishedAt: string;
+    authors: string;
+    type: 'article';
+    route: string;
+    img: {
+      url: string;
+      alt: string;
+    };
+  };
   cat: ${prop}
   sub: ${prop}
 }`;
@@ -27,6 +40,15 @@ const displayed = (minutes: number) => {
   return round === 1 ? `${round} minute` : `${round} minutes`;
 };
 
+const toSlug = (str: string) => {
+  return str
+    .normalize('NFD') // Remove accents
+    .replace(/[\u0300-\u036f]/g, '') // Strip diacritics
+    .toLowerCase() // Convert to lowercase
+    .replace(/\s+/g, '-') // Replace spaces with dashes
+    .replace(/[^a-z0-9-]/g, ''); // Remove special characters
+};
+
 export const computedFields: ComputedFields = {
   readingTime: {
     type: 'string',
@@ -38,53 +60,36 @@ export const computedFields: ComputedFields = {
     resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
   },
 
-  slugs: {
-    type: Urls as 'string',
+  meta: {
+    type: meta as 'string',
     resolve: (doc) => {
-      const categories = {
-        Technology: 'technology',
-        Smartphone: 'smartphone',
-        'Web Design': 'web-design',
-        'Web Development': 'web-development',
-        'Software Development': 'software-development',
-        Psychology: 'psychology',
-        'Critical Psychology': 'critical-psychology',
-        'Positive Psychology': 'positive-psychology',
-        'Personality Psychology': 'personality-psychology',
-        'Current events and psychology': 'current-events-psychology',
-        Philosophy: 'philosophy',
-        'Philosophy of Religion': 'philosophy-religion',
-        'Philosophy of Life and Spirituality': 'philosophy-life-spirituality',
-        Finance: 'finance',
-        'Personal Finance': 'personal-finance',
-        Relationships: 'relationships',
-        Couple: 'couple',
-        Emotions: 'emotions',
-        'Self-Esteem': 'self-esteem',
-        Culture: 'culture',
-        'Current Affairs and Psychology': 'current-affairs-psychology',
-        'Stories and Reflections': 'stories-reflections',
-        Wellness: 'wellness',
-        Reflections: 'reflections',
-      };
+      const {
+        title,
+        summary,
+        publishedAt,
+        author,
+        cover,
+        coverAlt,
+        category,
+        subcategory,
+      } = doc;
+
+      const url_post = `/articles/${doc._raw.flattenedPath}`;
+      const url_cat = `/articles/${toSlug(category)}`;
+      const url_sub = `/articles/${toSlug(category)}/${toSlug(subcategory)}`;
 
       return {
-        post: `/${doc._raw.flattenedPath}`,
-        cat: `/${categories[doc.category as Content]}`,
-        sub: `/${categories[doc.category as Content]}/${
-          categories[doc.subcategory as Content]
-        }`,
-      };
-    },
-  },
-
-  //BlogSEO
-  blogseo: {
-    type: Blogseo as 'string',
-    resolve: (doc) => {
-      return {
-        cat: seo(doc.category),
-        sub: seo(doc.subcategory),
+        post: {
+          title,
+          summary,
+          type: 'article',
+          publishedAt,
+          authors: author,
+          route: url_post,
+          img: { url: cover, alt: coverAlt },
+        },
+        cat: dataseo(category, url_cat),
+        sub: dataseo(subcategory, url_sub),
       };
     },
   },

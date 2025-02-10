@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check-unused": "depcheck"
+    "check-unused": "depcheck",
+    "find-deadcode": "ts-prune --ignore .next"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -22,6 +23,7 @@
     "openai": "^4.80.1",
     "openai-edge": "^1.2.2",
     "prettier": "^3.4.2",
+    "radix-ui": "^1.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -32,8 +34,6 @@
     "@types/node": "^20.17.16",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
-    "@typescript-eslint/parser": "^8.21.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.6.0",
     "depcheck": "^1.4.7",
@@ -41,6 +41,7 @@
     "eslint-config-next": "^15.1.6",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-safeguard": "^2.0.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^15.14.0",
     "next-contentlayer": "^0.3.4",
@@ -49,7 +50,6 @@
     "reading-time": "^1.5.0",
     "remark-gfm": "^4.0.0",
     "ts-prune": "^0.10.3",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.21.0"
+    "typescript": "^5.7.3"
   }
 }
