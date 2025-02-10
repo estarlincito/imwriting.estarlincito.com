@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
     <Container size='4'>
       <Box p={{ initial: '5', md: '0' }}>
         <Header
-          title='Hey there! 👋 Welcome to Imwrating'
+          title='Hey there! 👋 Welcome to Imwriting'
           summary={summary}
           mt='5'
         />

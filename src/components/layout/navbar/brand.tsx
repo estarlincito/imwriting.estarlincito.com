@@ -21,7 +21,7 @@ const Brand: React.FC = () => {
             alt='Logo'
             style={{ backgroundColor: 'var(--sky-8)', borderRadius: '100%' }}
           />
-          <Strong>Imwrating</Strong>
+          <Strong>Imwriting</Strong>
         </Link>
       </Flex>
     </Box>
