@@ -1,40 +1,47 @@
 import Links from '@/types/links';
-import { allBlogs } from 'contentlayer/generated';
+import { ObjectUtils, ArrayUtils } from '@estarlincito/utils';
+import { allArticles } from 'contentlayer/generated';
 
-const all_cat = Object.entries(
-  allBlogs.reduce((cat: { [key: string]: string }, item) => {
-    cat[item.meta.cat.route] = item.category;
-    return cat;
-  }, {}),
+//categories
+const categories = ArrayUtils.getUniqueByKey(
+  allArticles,
+  'category',
+  'meta:pathnames:category',
 );
 
-const all_sub = Object.entries(
-  allBlogs.reduce((sub: { [key: string]: string }, item) => {
-    sub[item.meta.sub.route] = item.subcategory;
-    return sub;
-  }, {}),
+const catlinks = categories.map((item) => {
+  return {
+    label: item['category'],
+    route: item['meta:pathnames:category'],
+  };
+});
+
+//subcategory
+const subCategories = ArrayUtils.getUniqueByKey(
+  allArticles,
+  'subcategory',
+  'meta:pathnames:subcategory',
 );
 
-const catlinks: Links[] = all_cat.map(([route, label]) => ({
-  route,
-  label,
-}));
+const sublinks = subCategories.map((item) => {
+  return {
+    label: item['subcategory'],
+    route: item['meta:pathnames:subcategory'],
+  };
+});
 
-const sublinks: Links[] = all_sub.map(([route, label]) => ({
-  route,
-  label,
-}));
-
+//alllinks
 const alllinks: Links[] = [...catlinks, ...sublinks];
 
-const TOPICS: {
+interface Topics {
   catlinks: Links[];
   sublinks: Links[];
   alllinks: Links[];
-} = {
+}
+const TOPICS: Topics = ObjectUtils.freeze({
+  alllinks,
   catlinks,
   sublinks,
-  alllinks,
-};
+});
 
 export default TOPICS;

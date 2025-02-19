@@ -1,21 +1,30 @@
 import Header from '@/components/layout/header';
-import { Blog } from 'contentlayer/generated';
-import PostsList from '@/components/posts/posts-list';
+import { type Articles } from 'contentlayer/generated';
+import ArticlesList from '@/components/articles/list';
 import React from 'react';
 
 interface Props {
-  data: Blog[];
+  articles: Articles[];
   page: string | undefined;
 }
 
-const Category: React.FC<Props> = ({ data, page }: Props) => {
-  const { meta } = data[0];
-  const { title, summary, route } = meta.cat;
+const Category = ({ articles, page }: Props) => {
+  const {
+    meta: {
+      category: { title, description },
+      pathnames,
+    },
+  } = articles[0];
 
   return (
     <>
-      <Header slug={[{ title, route }]} title={title} summary={summary} m='5' />
-      <PostsList posts={data} page={page} />
+      <Header
+        slug={[{ route: pathnames.category, title }]}
+        title={title}
+        description={description}
+        m='5'
+      />
+      <ArticlesList articles={articles} page={page} />
     </>
   );
 };

@@ -1,12 +1,13 @@
 'use client';
+
 import Wrapper from '@/components/layout/wrapper';
-import IconButton from '@/components/ui/Icon-button';
 
 import {
   Button,
   Container,
   Flex,
   Heading,
+  IconButton,
   Link,
   Strong,
   Text,
@@ -15,7 +16,7 @@ import React from 'react';
 
 type Props = { error: Error; reset: () => void };
 
-const Error: React.FC<Props> = ({ error, reset }) => {
+const Error = ({ error, reset }: Props) => {
   return (
     <Container size='1'>
       <Wrapper align='center'>

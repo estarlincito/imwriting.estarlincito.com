@@ -7,24 +7,27 @@ import { Heading, Text } from '@radix-ui/themes';
 import React from 'react';
 
 export const { metadata } = ABOUT;
-const { title, route, summary, content } = ABOUT;
 
 const Mission = Text;
 const Bio = Text;
 
-const AboutPage: React.FC = () => {
+const Page = () => {
   return (
     <Container size='3'>
       <Wrapper align='start'>
-        <Header title={title} summary={summary} slug={[{ title, route }]} />
-        <Heading size='4'>{content.introduction.greeting}</Heading>
-        <Bio>{content.introduction.bio}</Bio>
-        <Mission>{content.introduction.mission}</Mission>
-        <Topics {...content.topics} />
-        <Text>{content.closingMessage}</Text>
+        <Header
+          title={ABOUT.title}
+          description={ABOUT.description}
+          slug={[{ route: ABOUT.path, title: ABOUT.title }]}
+        />
+        <Heading size='4'>{ABOUT.content.introduction.greeting}</Heading>
+        <Bio>{ABOUT.content.introduction.bio}</Bio>
+        <Mission>{ABOUT.content.introduction.mission}</Mission>
+        <Topics {...ABOUT.content.topics} />
+        <Text>{ABOUT.content.closingMessage}</Text>
       </Wrapper>
     </Container>
   );
 };
 
-export default AboutPage;
+export default Page;

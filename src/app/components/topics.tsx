@@ -2,7 +2,7 @@ import TOPICS from '@/constants/topics';
 import { Badge, Heading, Link, Section } from '@radix-ui/themes';
 import React from 'react';
 
-const Topics: React.FC = () => {
+const Topics = () => {
   return (
     <Section p={{ initial: '5', md: '0' }}>
       <Heading align='center' my='2'>

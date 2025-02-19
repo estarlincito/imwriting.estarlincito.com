@@ -5,7 +5,7 @@ interface Props {
   size: '1' | '2' | '3' | '4';
 }
 
-const Container: React.FC<Props> = (props) => {
+const Container = (props: Props) => {
   return (
     <RadixContainer minHeight='90vh' size={props.size} mt='70px' mx='2'>
       {props.children}

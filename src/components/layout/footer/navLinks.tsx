@@ -6,17 +6,13 @@ import Target from '@/types/target';
 import { Box, Flex, Heading, Link } from '@radix-ui/themes';
 import React from 'react';
 
-interface LinkListProps {
+interface Props {
   title: string;
   links: Links[];
   target: Target;
 }
 
-const LinkList: React.FC<LinkListProps> = ({
-  title,
-  links,
-  target,
-}: LinkListProps) => {
+const LinkList = ({ title, links, target }: Props) => {
   return (
     <Box>
       <Heading size='4'>{title}</Heading>
@@ -38,7 +34,7 @@ const LinkList: React.FC<LinkListProps> = ({
   );
 };
 
-const NavLinks: React.FC = () => {
+const NavLinks = () => {
   return (
     <Flex
       justify={{ initial: 'start', md: 'center' }}

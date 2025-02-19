@@ -1,11 +1,8 @@
-//This is for the social media links
+import { ObjectUtils } from '@estarlincito/utils';
 
-const x = { route: 'https://x.com/estarlincito', label: 'Twitter' };
-const linktr = { route: 'https://linktr.ee/estarlincito', label: 'Linktr' };
+const x = { label: 'Twitter', route: 'https://x.com/estarlincito' };
+const linktr = { label: 'Linktr', route: 'https://linktr.ee/estarlincito' };
 const links = [x, linktr];
 
-export default class HIREME {
-  static readonly links = links;
-  static readonly x = x;
-  static readonly linktr = linktr;
-}
+const HIREME = ObjectUtils.freeze({ links, linktr, x });
+export default HIREME;

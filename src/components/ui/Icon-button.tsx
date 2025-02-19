@@ -8,7 +8,7 @@ interface Props {
   size?: '3' | '1' | '2' | '4';
 }
 
-const IconButton: React.FC<Props> = ({ children, onClick, variant, size }) => {
+const IconButton = ({ children, onClick, variant, size }: Props) => {
   return (
     <RadixIconButton
       variant={variant}

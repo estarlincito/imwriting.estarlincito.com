@@ -32,7 +32,7 @@ type M =
 
 interface Props {
   title: string;
-  summary: string;
+  description: string;
   slug?: { title: string; route: string }[];
   m?: M;
   mb?: M;
@@ -41,16 +41,7 @@ interface Props {
   my?: M;
 }
 
-const Header: React.FC<Props> = ({
-  title,
-  summary,
-  slug,
-  m,
-  mb,
-  mt,
-  mx,
-  my,
-}) => {
+const Header = ({ title, description, slug, m, mb, mt, mx, my }: Props) => {
   return (
     <Box
       minWidth='18.75rem'
@@ -64,7 +55,7 @@ const Header: React.FC<Props> = ({
       <Heading my='2' size='7'>
         {title}
       </Heading>
-      <Blockquote my='2'>{summary}</Blockquote>
+      <Blockquote my='2'>{description}</Blockquote>
       <Separator orientation='horizontal' size='4' mt='2' />
     </Box>
   );

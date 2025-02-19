@@ -4,16 +4,16 @@ import { Box, Flex, Link, Strong, Text } from '@radix-ui/themes';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-interface NavProps {
+interface Props {
   slug: { title: string; route: string }[];
 }
 
 const styled = css({
-  whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 });
 
-const Breadcrumb: React.FC<NavProps> = ({ slug }) => {
+const Breadcrumb = ({ slug }: Props) => {
   const pathname = usePathname();
   const [firstSlug, secondSlug, thirdSlug] = slug;
   return (

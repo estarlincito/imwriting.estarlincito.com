@@ -2,19 +2,12 @@ import ABOUT from './about';
 import ARTICLES from './articles';
 import HOME from './home';
 
-type Return = {
-  label: string;
-  route: string;
-};
-
-type Page = (label: string, route: string) => Return;
-
-const page: Page = (label, route) => ({ label, route });
+const page = (label: string, route: string) => ({ label, route });
 
 const SITEMAP = [
-  page(HOME.title, HOME.route),
-  page(ABOUT.title, ABOUT.route),
-  page(ARTICLES.title, ARTICLES.route),
+  page(HOME.title, HOME.path),
+  page(ABOUT.title, ABOUT.path),
+  page(ARTICLES.title, ARTICLES.path),
 ];
 
 export default SITEMAP;

@@ -13,7 +13,7 @@ interface CollapseContextValue {
 export const CollapseContext = createContext({} as CollapseContextValue);
 
 //Provider context
-export const CollapseProvider: React.FC<ChildrenProps> = ({ children }) => {
+export const CollapseProvider = ({ children }: ChildrenProps) => {
   const [collapse, setCollapse] = useState<Collapse>(false);
 
   return (

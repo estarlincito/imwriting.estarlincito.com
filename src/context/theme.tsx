@@ -1,9 +1,9 @@
 'use client';
-import ChildrenProps from '@/types/children';
+import Props from '@/types/children';
 import { ThemeProvider } from 'next-themes';
 import React from 'react';
 
-const AppThemeProvider: React.FC<ChildrenProps> = ({ children }) => {
+const AppThemeProvider = ({ children }: Props) => {
   return (
     <ThemeProvider attribute='class' defaultTheme='system'>
       {children}

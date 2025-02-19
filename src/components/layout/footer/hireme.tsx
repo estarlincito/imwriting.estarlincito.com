@@ -1,25 +1,23 @@
-import { TwitterLogoIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
 import { Box, Button, Flex, IconButton, Link } from '@radix-ui/themes';
 import React from 'react';
 
-const Hireme: React.FC = () => {
+const Hireme = () => {
   return (
     <Flex gapX='2'>
       <Link href='https://x.com/estarlincito' target='_blank'>
-        <IconButton variant='outline'>
+        <IconButton variant='soft' color='blue'>
           <TwitterLogoIcon />
         </IconButton>
       </Link>
-      {/* <Link href=''>
-        <IconButton>
-          <InstagramLogoIcon />
+      <Link
+        href='https://github.com/estarlincito/imwriting.estarlincito.com'
+        target='_blank'
+      >
+        <IconButton variant='soft' color='gray'>
+          <GitHubLogoIcon />
         </IconButton>
       </Link>
-      <Link href=''>
-        <IconButton>
-          <InstagramLogoIcon />
-        </IconButton>
-      </Link> */}
 
       <Box display={{ initial: 'block', sm: 'none' }}>
         <Link href='https://ko-fi.com/estarlincito' target='_blank'>

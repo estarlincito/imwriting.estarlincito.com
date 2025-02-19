@@ -3,7 +3,7 @@ import { Box, Button, Flex, Link, Separator } from '@radix-ui/themes';
 import Brand from './brand';
 import Menu from './menu';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
     <Box>
       <Flex

@@ -1,53 +1,28 @@
 import { Slug } from '@/types/params';
-import { allBlogs, Blog } from 'contentlayer/generated';
-import { Metadata } from 'next';
-import SEO from './seo';
+import { allArticles, type Articles } from 'contentlayer/generated';
+type Type = 'article' | 'category' | 'subCategory';
 
-interface Articles {
-  data: Blog[];
-  metadata: Metadata;
-  isPost: boolean;
-  isCategory: boolean;
-  isSubcategory: boolean;
-}
-const articles = (slug: Slug): Articles | null => {
-  const segment1 = slug.length >= 1 ? `/articles/${slug[0]}` : '';
+const getArticles = (slug: Slug) => {
+  if (!slug.length) return null;
+  const segment1 = `/articles/${slug[0]}`;
   const segment2 = slug.length === 2 ? `${segment1}/${slug[1]}` : '';
 
-  let metadata_: Metadata = {};
+  let type = 'article' as Type;
 
-  const data = allBlogs.filter(
-    (item) =>
-      item.meta.post.route === segment1 ||
-      (item.meta.cat.route === segment1 && slug.length === 1) ||
-      (item.meta.sub.route === segment2 && slug.length === 2),
-  );
+  const articles = allArticles.filter(({ meta: { pathnames } }: Articles) => {
+    const isArticle = pathnames.article === segment1;
+    const isCategory = pathnames.category === segment1 && slug.length === 1;
+    const isSubCategory =
+      pathnames.subcategory === segment2 && slug.length === 2;
 
-  if (data.length === 0) {
-    return null;
-  }
+    if (isArticle) type = 'article';
+    else if (isCategory) type = 'category';
+    else if (isSubCategory) type = 'subCategory';
 
-  const value = data[0];
+    return isArticle || isCategory || isSubCategory;
+  });
 
-  const isPost = value.meta.post.route === segment1;
-  const isCategory = value.meta.cat.route === segment1 && slug.length === 1;
-  const isSubcategory = value.meta.sub.route === segment2 && slug.length === 2;
-
-  if (isPost) {
-    const { metadata } = new SEO(value.meta.post);
-    metadata_ = metadata;
-  }
-
-  if (isCategory) {
-    const { metadata } = new SEO(value.meta.cat);
-    metadata_ = metadata;
-  }
-
-  if (isSubcategory) {
-    const { metadata } = new SEO(value.meta.sub);
-    metadata_ = metadata;
-  }
-  return { data, metadata: metadata_, isPost, isCategory, isSubcategory };
+  return articles.length ? { articles, type } : null;
 };
 
-export default articles;
+export default getArticles;

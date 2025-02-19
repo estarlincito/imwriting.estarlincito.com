@@ -1,8 +1,9 @@
 import { Box, Flex, Link, Strong } from '@radix-ui/themes';
 import React from 'react';
 import Image from 'next/image';
+import HOME from '@/constants/home';
 
-const Brand: React.FC = () => {
+const Brand = () => {
   return (
     <Box width='150px'>
       <Flex
@@ -21,7 +22,7 @@ const Brand: React.FC = () => {
             alt='Logo'
             style={{ backgroundColor: 'var(--sky-8)', borderRadius: '100%' }}
           />
-          <Strong>Imwriting</Strong>
+          <Strong>{HOME.title}</Strong>
         </Link>
       </Flex>
     </Box>

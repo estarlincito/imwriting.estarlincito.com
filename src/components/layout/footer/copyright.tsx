@@ -1,15 +1,11 @@
 import { Link, Text } from '@radix-ui/themes';
 import React from 'react';
+import { copyright } from 'settings';
 
-const Copyright: React.FC = () => {
-  const date = new Date();
-  const currentgeYear = date.getFullYear();
-  const buildYear = 2023;
-  const ownYears = `${buildYear}-${currentgeYear}`;
-
+const Copyright = () => {
   return (
     <Text as='p' size='3'>
-      &nbsp; Copyright © {buildYear === currentgeYear ? buildYear : ownYears}
+      {copyright}
       &nbsp;
       <Link weight='bold' href='/' target='_self' color='gray'>
         Estarlincito

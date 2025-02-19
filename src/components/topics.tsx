@@ -1,7 +1,7 @@
 import { Box, Em, Heading, Strong, Text } from '@radix-ui/themes';
 import React from 'react';
 
-type Topics = {
+type Props = {
   description: string;
   list: {
     title: string;
@@ -10,17 +10,17 @@ type Topics = {
   closingNote: string;
 };
 
-const Topics: React.FC<Topics> = ({ description, list, closingNote }) => {
+const Topics = ({ description, list, closingNote }: Props) => {
   return (
     <Box>
       <Heading size='4' mb='4'>
         {description}
       </Heading>
       <ul>
-        {list.map((tema, id) => (
+        {list.map((topic, id) => (
           <li key={id}>
             <Text size='3'>
-              <Strong>{tema.title}</Strong> - <Em>{tema.details}</Em>
+              <Strong>{topic.title}</Strong> - <Em>{topic.details}</Em>
             </Text>
           </li>
         ))}

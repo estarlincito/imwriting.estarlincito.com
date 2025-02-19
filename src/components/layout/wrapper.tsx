@@ -6,7 +6,7 @@ interface Props {
   align?: 'center' | 'start' | 'end' | 'baseline' | 'stretch';
 }
 
-const Wrapper: React.FC<Props> = (props) => {
+const Wrapper = (props: Props) => {
   return (
     <Flex
       direction='column'

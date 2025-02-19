@@ -1,16 +1,10 @@
 'use client';
-import apiFetch from '@/lib/apiFetch';
-import handleError from '@/lib/handle-error';
+
 import Quote from '@/types/quote';
+import { apiFetch, handleError } from '@estarlincito/utils';
 import { useEffect, useState } from 'react';
 
-type Return = {
-  quote: Quote;
-  random: Quote;
-  quotes: Quote[];
-};
-
-const useQuotes = (): Return => {
+const useQuotes = () => {
   const [quotes, setQuotes] = useState([] as Quote[]);
   const [quote, setQuote] = useState({} as Quote);
   const [random, setRandom] = useState({} as Quote);
@@ -19,8 +13,8 @@ const useQuotes = (): Return => {
     const url =
       'https://raw.githubusercontent.com/estarlincito/iDB/quotes/data_en.json';
 
-    apiFetch({ url, method: 'GET' })
-      .then((response) => response.data as Quote[])
+    apiFetch({ method: 'GET', url })
+      .then((response) => response.json())
       .then((data: Quote[]) => {
         setQuotes(data);
 
@@ -42,7 +36,7 @@ const useQuotes = (): Return => {
       .catch(() => handleError('Error fetching quotes:'));
   }, []);
 
-  return { quote, random, quotes };
+  return { quote, quotes, random };
 };
 
 export default useQuotes;

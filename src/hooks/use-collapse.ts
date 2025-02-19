@@ -1,24 +1,23 @@
 'use client';
 import { CollapseContext } from '@/context/collapse';
-import handleError from '@/lib/handle-error';
+import { handleError } from '@estarlincito/utils';
+
 import { useContext } from 'react';
 
-type Return = { collapse: boolean; togleCollapse: () => void };
-
-const useCollapse = (): Return => {
+const useCollapse = () => {
   const collapseContext = useContext(CollapseContext);
 
   if (collapseContext === undefined) {
-    handleError('Check if CollapseContext code is corret');
+    handleError('Check if CollapseContext code is correct');
   }
 
   const { collapse, setCollapse } = collapseContext;
 
-  const togleCollapse = (): void => {
+  const toggleCollapse = (): void => {
     setCollapse(!collapse);
   };
 
-  return { collapse, togleCollapse };
+  return { collapse, toggleCollapse };
 };
 
 export default useCollapse;

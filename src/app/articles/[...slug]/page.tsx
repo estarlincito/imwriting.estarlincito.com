@@ -1,9 +1,8 @@
-import articles from '@/lib/articles';
+import getArticles from '@/lib/articles';
 import { Params } from '@/types/params';
-import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import PostLayout from '@/components/posts/post-content';
+import ArticleContent from '@/components/articles/content';
 import Category from './pages/category';
 import SubCategory from './pages/subcategory';
 import Container from '@/components/layout/container';
@@ -13,39 +12,38 @@ interface Props {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }
 
-type Gmetadata = (props: Props) => Promise<Metadata>;
-
-export const generateMetadata: Gmetadata = async (props) => {
+export const generateMetadata = async (props: Props) => {
   const { params } = props;
   const { slug } = await params;
-  const posts = articles(slug);
+  const articlesData = getArticles(slug);
 
-  if (!posts) notFound();
+  if (!articlesData) notFound();
 
-  const { isPost, isCategory, isSubcategory, metadata } = posts;
+  const { articles, type } = articlesData;
 
-  if (isPost) return metadata;
-  if (isCategory) return metadata;
-  if (isSubcategory) return metadata;
+  if (type === 'article') return articles[0].meta.article;
+  if (type === 'category') return articles[0].meta.category;
+  if (type === 'subCategory') return articles[0].meta.subcategory;
   return {};
 };
 
-const Page: React.FC<Props> = async (props) => {
+const Page = async (props: Props) => {
   const { params, searchParams } = props;
   const { page } = await searchParams;
   const { slug } = await params;
   if (slug.length >= 3) notFound();
 
-  const posts = articles(slug);
-
-  if (!posts) notFound();
-  const { data, isPost, isCategory, isSubcategory } = posts;
+  const articlesData = getArticles(slug);
+  if (!articlesData) notFound();
+  const { articles, type } = articlesData;
 
   return (
-    <Container size={isPost ? '3' : '4'}>
-      {isPost && <PostLayout {...data[0]} />}
-      {isCategory && <Category data={data} page={page} />}
-      {isSubcategory && <SubCategory data={data} page={page} />}
+    <Container size={type === 'article' ? '3' : '4'}>
+      {type === 'article' && <ArticleContent {...articles[0]} />}
+      {type === 'category' && <Category articles={articles} page={page} />}
+      {type === 'subCategory' && (
+        <SubCategory articles={articles} page={page} />
+      )}
     </Container>
   );
 };

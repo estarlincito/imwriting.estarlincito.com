@@ -7,15 +7,14 @@ import Topics from './components/topics';
 import { Box } from '@radix-ui/themes';
 
 export const { metadata } = HOME;
-const { summary } = HOME;
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   return (
     <Container size='4'>
       <Box p={{ initial: '5', md: '0' }}>
         <Header
-          title='Hey there! 👋 Welcome to Imwriting'
-          summary={summary}
+          title={`Hey there! 👋 Welcome to ${HOME.title}`}
+          description={HOME.description}
           mt='5'
         />
       </Box>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Flex, Link } from '@radix-ui/themes';
 
-const Menu: React.FC = () => {
+const Menu = () => {
   return (
     <Flex direction='row' justify='center' gapX='3'>
       <Link href='/'>

@@ -8,14 +8,14 @@ import Props from '@/types/children';
 import { Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import React from 'react';
+import { locale } from 'settings';
 
-const RootLayout: React.FC<Props> = (props) => {
+const RootLayout = (props: Props) => {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
         <Theme accentColor='sky' radius='full'>
           <CollapseProvider>
-            {/* <Opacity /> */}
             <Navbar />
             {props.children}
             <AppThemeProvider>
@@ -29,8 +29,8 @@ const RootLayout: React.FC<Props> = (props) => {
           reverseOrder={false}
           toastOptions={{
             style: {
-              color: 'white',
               background: 'black',
+              color: 'white',
             },
           }}
         />

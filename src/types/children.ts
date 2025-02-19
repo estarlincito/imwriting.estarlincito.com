@@ -1,7 +1,7 @@
 import React from 'react';
 
-interface ChildrenProps {
+interface Children {
   children: React.ReactNode;
 }
 
-export default ChildrenProps;
+export default Children;

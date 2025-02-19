@@ -2,10 +2,10 @@ import { Box, Flex, Separator } from '@radix-ui/themes';
 import React from 'react';
 import Copyright from './copyright';
 import Hireme from './hireme';
-import ThemeTogle from './theme';
+import ThemeToggle from './theme';
 import Brand from '../navbar/brand';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <Box mt='5'>
       <Separator size='4' />
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
               <Brand />
             </Box>
             <Hireme />
-            <ThemeTogle />
+            <ThemeToggle />
           </Flex>
 
           <Box mt='3'>

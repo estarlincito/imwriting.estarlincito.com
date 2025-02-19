@@ -1,56 +1,50 @@
 'use client';
-import { DesktopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { Badge, Box, Button, Flex } from '@radix-ui/themes';
+import { Flex, type IconProps, SegmentedControl } from '@radix-ui/themes';
 import React, { useEffect, useState } from 'react';
 
 import { useTheme } from 'next-themes';
-const ThemeTogle: React.FC = () => {
-  const { setTheme, theme } = useTheme();
+import { DesktopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 
+interface Props {
+  value: 'light' | 'dark' | 'system';
+  Icon: React.ForwardRefExoticComponent<
+    IconProps & React.RefAttributes<SVGSVGElement>
+  >;
+}
+const Item = ({ value, Icon }: Props) => {
+  return (
+    <SegmentedControl.Item value={value}>
+      <Flex align='center' gap='1'>
+        <Icon />
+        {value.replace(value[0], value[0].toUpperCase())}
+      </Flex>
+    </SegmentedControl.Item>
+  );
+};
+const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
+  const { setTheme, theme } = useTheme();
 
   //Ensure the component is only rendered after the client has mounted
   useEffect(() => {
     setMounted(true);
-  }, []);
+  }, [theme]);
 
-  if (!mounted) return null; // Prevent rendering until mounted
+  if (!mounted) return null;
 
   return (
-    <Flex gapX='2'>
-      <Box p='3' asChild>
-        <Badge radius='small' variant='outline' color='gray'>
-          <Button
-            onClick={() => {
-              setTheme('light');
-            }}
-            disabled={theme === 'light' && true}
-            variant='outline'
-          >
-            <SunIcon /> Light
-          </Button>
-          <Button
-            onClick={() => {
-              setTheme('system');
-            }}
-            disabled={theme === 'system' && true}
-            variant='outline'
-          >
-            <DesktopIcon /> System
-          </Button>
-          <Button
-            onClick={() => {
-              setTheme('dark');
-            }}
-            disabled={theme === 'dark' && true}
-            variant='outline'
-          >
-            <MoonIcon /> Dark
-          </Button>
-        </Badge>
-      </Box>
-    </Flex>
+    <SegmentedControl.Root
+      defaultValue={theme}
+      radius='small'
+      onValueChange={(value) => {
+        setTheme(value);
+      }}
+    >
+      <Item value='light' Icon={SunIcon} />
+      <Item value='system' Icon={DesktopIcon} />
+      <Item value='dark' Icon={MoonIcon} />
+    </SegmentedControl.Root>
   );
 };
 
-export default ThemeTogle;
+export default ThemeToggle;
