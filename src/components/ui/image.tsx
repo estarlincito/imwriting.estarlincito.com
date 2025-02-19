@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import css from '@/lib/css';
 import { AspectRatio } from '@radix-ui/themes';
 import React from 'react';
+
+import css from '@/lib/css';
 
 const Styled = {
   img: css({

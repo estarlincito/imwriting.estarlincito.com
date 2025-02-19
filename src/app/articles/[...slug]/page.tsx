@@ -1,11 +1,13 @@
-import getArticles from '@/lib/articles';
-import { Params } from '@/types/params';
 import { notFound } from 'next/navigation';
 import React from 'react';
+
 import ArticleContent from '@/components/articles/content';
+import Container from '@/components/layout/container';
+import getArticles from '@/lib/articles';
+import { Params } from '@/types/params';
+
 import Category from './pages/category';
 import SubCategory from './pages/subcategory';
-import Container from '@/components/layout/container';
 
 interface Props {
   params: Promise<Params>;

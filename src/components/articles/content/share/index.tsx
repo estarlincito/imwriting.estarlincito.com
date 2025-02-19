@@ -1,6 +1,7 @@
 import { Box, Flex, Heading } from '@radix-ui/themes';
 import React from 'react';
 import { FaThreads, FaWhatsapp, FaXTwitter } from 'react-icons/fa6';
+
 import ShareLink from './link';
 import URL from './url';
 

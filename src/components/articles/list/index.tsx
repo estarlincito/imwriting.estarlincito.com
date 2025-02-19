@@ -1,10 +1,12 @@
-import { PageType } from '@/types/pagination';
+import { pagination, sortByDate } from '@estarlincito/utils';
 import { Box, Grid } from '@radix-ui/themes';
 import { type Articles } from 'contentlayer/generated';
 import React from 'react';
+
+import { PageType } from '@/types/pagination';
+
 import Card from './card';
 import Pagination from './pagination';
-import { pagination, sortByDate } from '@estarlincito/utils';
 
 interface Props {
   articles: Articles[];

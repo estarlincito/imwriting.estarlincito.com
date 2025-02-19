@@ -1,7 +1,8 @@
-import Header from '@/components/layout/header';
 import { type Articles } from 'contentlayer/generated';
-import ArticlesList from '@/components/articles/list';
 import React from 'react';
+
+import ArticlesList from '@/components/articles/list';
+import Header from '@/components/layout/header';
 
 interface Props {
   articles: Articles[];

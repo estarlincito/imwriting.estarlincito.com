@@ -1,7 +1,5 @@
 'use client';
 
-import Wrapper from '@/components/layout/wrapper';
-
 import {
   Button,
   Container,
@@ -13,6 +11,8 @@ import {
   Text,
 } from '@radix-ui/themes';
 import React from 'react';
+
+import Wrapper from '@/components/layout/wrapper';
 
 type Props = { error: Error; reset: () => void };
 

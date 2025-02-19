@@ -1,6 +1,7 @@
 import * as Icons from '@radix-ui/react-icons';
 import { Flex } from '@radix-ui/themes';
 import React from 'react';
+
 import Inf from './inf';
 
 interface Props {

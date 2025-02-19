@@ -1,5 +1,6 @@
 import { type ComputedFields } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
+
 import meta from './meta';
 import metaTypes from './types/meta';
 

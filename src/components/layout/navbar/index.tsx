@@ -1,5 +1,6 @@
-import React from 'react';
 import { Box, Button, Flex, Link, Separator } from '@radix-ui/themes';
+import React from 'react';
+
 import Brand from './brand';
 import Menu from './menu';
 

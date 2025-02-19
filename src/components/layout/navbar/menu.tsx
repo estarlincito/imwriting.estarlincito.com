@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, Flex, Link } from '@radix-ui/themes';
+import React from 'react';
 
 const Menu = () => {
   return (

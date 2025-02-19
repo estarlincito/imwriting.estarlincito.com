@@ -1,9 +1,9 @@
-import ArticlesList from '@/components/articles/list';
 import { sortByDate } from '@estarlincito/utils';
-
 import { Flex, Heading, Link, Section } from '@radix-ui/themes';
 import { allArticles } from 'contentlayer/generated';
 import React from 'react';
+
+import ArticlesList from '@/components/articles/list';
 
 const Latest = () => {
   const lastThree = sortByDate(allArticles, 'publishedTime').slice(0, 3);

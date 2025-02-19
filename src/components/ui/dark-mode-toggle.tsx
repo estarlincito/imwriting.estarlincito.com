@@ -1,7 +1,8 @@
-import IconButton from '@/components/ui/Icon-button';
 import * as Icons from '@radix-ui/react-icons';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
+
+import IconButton from '@/components/ui/Icon-button';
 
 const DarkModeToggle = () => {
   const { setTheme, theme } = useTheme();

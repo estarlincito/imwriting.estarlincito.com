@@ -1,6 +1,7 @@
 'use client';
-import ChildrenProps from '@/types/children';
 import React, { createContext, useState } from 'react';
+
+import ChildrenProps from '@/types/children';
 
 type Collapse = boolean;
 

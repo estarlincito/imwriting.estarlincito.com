@@ -1,10 +1,11 @@
+import { Heading, Text } from '@radix-ui/themes';
+import React from 'react';
+
 import Container from '@/components/layout/container';
 import Header from '@/components/layout/header';
 import Wrapper from '@/components/layout/wrapper';
 import Topics from '@/components/topics';
 import ABOUT from '@/constants/about';
-import { Heading, Text } from '@radix-ui/themes';
-import React from 'react';
 
 export const { metadata } = ABOUT;
 

@@ -1,12 +1,15 @@
-import Breadcrumb from '@/components/layout/breadcrumb';
-import Wrapper from '@/components/layout/wrapper';
-import Image from '@/components/ui/image';
 import { Heading } from '@radix-ui/themes';
 import { type Articles } from 'contentlayer/generated';
 import React from 'react';
+
+import Breadcrumb from '@/components/layout/breadcrumb';
+import Wrapper from '@/components/layout/wrapper';
+import Image from '@/components/ui/image';
+
+import Article from './article';
 import Author from './author';
 import Check from './check';
-import Article from './article';
+import Interesting from './interesting';
 import Share from './share';
 
 const ArticleContent = (props: Articles) => {
@@ -45,6 +48,7 @@ const ArticleContent = (props: Articles) => {
         description={description}
         url={meta.article.openGraph.url}
       />
+      <Interesting pathname={meta.pathnames.article} />
     </Wrapper>
   );
 };

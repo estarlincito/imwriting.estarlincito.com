@@ -2,9 +2,9 @@ import { Box, Heading, Link } from '@radix-ui/themes';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import NOTFOUNT from '@/constants/not-found';
 import Container from '@/components/layout/container';
 import Wrapper from '@/components/layout/wrapper';
+import NOTFOUNT from '@/constants/not-found';
 
 export const { metadata } = NOTFOUNT;
 

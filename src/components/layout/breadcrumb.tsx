@@ -1,8 +1,9 @@
 'use client';
-import css from '@/lib/css';
 import { Box, Flex, Link, Strong, Text } from '@radix-ui/themes';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+
+import css from '@/lib/css';
 
 interface Props {
   slug: { title: string; route: string }[];

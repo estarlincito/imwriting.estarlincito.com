@@ -1,14 +1,16 @@
+import '@/styles/themes-config.css';
+import '@radix-ui/themes/styles.css';
+
+import { Theme } from '@radix-ui/themes';
+import React from 'react';
+import { locale } from 'settings';
+
 import Footer from '@/components/layout//footer';
 import Navbar from '@/components/layout/navbar';
 import { CollapseProvider } from '@/context/collapse';
 import AppThemeProvider from '@/context/theme';
 import Toaster from '@/lib/toaster';
-import '@/styles/themes-config.css';
 import Props from '@/types/children';
-import { Theme } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
-import React from 'react';
-import { locale } from 'settings';
 
 const RootLayout = (props: Props) => {
   return (

@@ -1,9 +1,10 @@
-import IconButton from '@/components/ui/Icon-button';
-import css from '@/lib/css';
-import { LinkType } from '@/types/pagination';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { Box, Flex, Link, Strong, Text } from '@radix-ui/themes';
 import React from 'react';
+
+import IconButton from '@/components/ui/Icon-button';
+import css from '@/lib/css';
+import { LinkType } from '@/types/pagination';
 
 const Styled = { link: css({ alignItems: 'center', display: 'inline-flex' }) };
 

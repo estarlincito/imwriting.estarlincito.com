@@ -1,5 +1,6 @@
-import { Slug } from '@/types/params';
 import { allArticles, type Articles } from 'contentlayer/generated';
+
+import { Slug } from '@/types/params';
 type Type = 'article' | 'category' | 'subCategory';
 
 const getArticles = (slug: Slug) => {

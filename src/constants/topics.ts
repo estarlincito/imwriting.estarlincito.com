@@ -1,6 +1,7 @@
-import Links from '@/types/links';
-import { ObjectUtils, ArrayUtils } from '@estarlincito/utils';
+import { ArrayUtils, ObjectUtils } from '@estarlincito/utils';
 import { allArticles } from 'contentlayer/generated';
+
+import Links from '@/types/links';
 
 //categories
 const categories = ArrayUtils.getUniqueByKey(

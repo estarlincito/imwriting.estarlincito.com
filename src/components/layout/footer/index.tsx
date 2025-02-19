@@ -1,9 +1,10 @@
 import { Box, Flex, Separator } from '@radix-ui/themes';
 import React from 'react';
+
+import Brand from '../navbar/brand';
 import Copyright from './copyright';
 import Hireme from './hireme';
 import ThemeToggle from './theme';
-import Brand from '../navbar/brand';
 
 const Footer = () => {
   return (

@@ -1,5 +1,6 @@
-import Props from '@/types/children';
 import React from 'react';
+
+import Props from '@/types/children';
 
 const Empty = ({ children }: Props) => {
   return <>{children}</>;

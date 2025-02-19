@@ -1,10 +1,11 @@
+import { Box, Flex, Heading, Link } from '@radix-ui/themes';
+import React from 'react';
+
 import HIREME from '@/constants/hireme';
 import SITEMAP from '@/constants/siteMap';
 import TOPICS from '@/constants/topics';
 import Links from '@/types/links';
 import Target from '@/types/target';
-import { Box, Flex, Heading, Link } from '@radix-ui/themes';
-import React from 'react';
 
 interface Props {
   title: string;

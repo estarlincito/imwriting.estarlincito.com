@@ -1,7 +1,4 @@
-import Image from '@/components/ui/image';
-import css from '@/lib/css';
 import { dateFormat } from '@estarlincito/utils';
-
 import {
   Box,
   Card as CardRadix,
@@ -12,6 +9,9 @@ import {
 } from '@radix-ui/themes';
 import { type Articles } from 'contentlayer/generated';
 import React from 'react';
+
+import Image from '@/components/ui/image';
+import css from '@/lib/css';
 
 const Styled = {
   card: css({

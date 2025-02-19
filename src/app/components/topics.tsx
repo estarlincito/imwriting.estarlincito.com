@@ -1,6 +1,7 @@
-import TOPICS from '@/constants/topics';
 import { Badge, Heading, Link, Section } from '@radix-ui/themes';
 import React from 'react';
+
+import TOPICS from '@/constants/topics';
 
 const Topics = () => {
   return (

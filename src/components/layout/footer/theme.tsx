@@ -1,9 +1,8 @@
 'use client';
-import { Flex, type IconProps, SegmentedControl } from '@radix-ui/themes';
-import React, { useEffect, useState } from 'react';
-
-import { useTheme } from 'next-themes';
 import { DesktopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { Flex, type IconProps, SegmentedControl } from '@radix-ui/themes';
+import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from 'react';
 
 interface Props {
   value: 'light' | 'dark' | 'system';

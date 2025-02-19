@@ -1,10 +1,11 @@
-import Container from '@/components/layout/container';
-import Header from '@/components/layout/header';
-import ArticlesList from '@/components/articles/list';
-import ARTICLES from '@/constants/articles';
-import { PageType } from '@/types/pagination';
 import { allArticles } from 'contentlayer/generated';
 import React from 'react';
+
+import ArticlesList from '@/components/articles/list';
+import Container from '@/components/layout/container';
+import Header from '@/components/layout/header';
+import ARTICLES from '@/constants/articles';
+import { PageType } from '@/types/pagination';
 
 export const { metadata } = ARTICLES;
 interface Props {

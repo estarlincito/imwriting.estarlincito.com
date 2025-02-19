@@ -1,10 +1,12 @@
+import { Box } from '@radix-ui/themes';
+import React from 'react';
+
 import Container from '@/components/layout/container';
 import Header from '@/components/layout/header';
 import HOME from '@/constants/home';
-import React from 'react';
+
 import Latest from './components/latest';
 import Topics from './components/topics';
-import { Box } from '@radix-ui/themes';
 
 export const { metadata } = HOME;
 

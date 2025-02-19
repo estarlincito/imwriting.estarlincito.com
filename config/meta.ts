@@ -5,8 +5,9 @@ import {
   toSlug,
 } from '@estarlincito/utils';
 import { LocalDocument } from 'contentlayer/source-files';
-import { locale, siteName, url as production } from '../settings';
 import yaml from 'yaml';
+
+import { locale, siteName, url as production } from '../settings';
 import Instances from './types/instances';
 
 const getMeta = async (title: string) => {
@@ -16,6 +17,7 @@ const getMeta = async (title: string) => {
   });
 
   const text = await res.text();
+
   const data = yaml.parse(text).categories as Instances[];
   const value = data.find((item) => item.title === title);
   if (value === undefined) {

@@ -1,10 +1,11 @@
-import css from '@/lib/css';
 import { Box, Strong, Text } from '@radix-ui/themes';
 import React, {
   AudioHTMLAttributes,
   DetailedHTMLProps,
   SourceHTMLAttributes,
 } from 'react';
+
+import css from '@/lib/css';
 
 const Styled = {
   audio: css({

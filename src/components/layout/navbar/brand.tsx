@@ -1,6 +1,7 @@
 import { Box, Flex, Link, Strong } from '@radix-ui/themes';
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+
 import HOME from '@/constants/home';
 
 const Brand = () => {

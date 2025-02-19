@@ -1,4 +1,5 @@
 import { makeSource } from 'contentlayer/source-files';
+
 import Articles from './config/articles';
 import mdxOptions from './config/mdxOptions';
 
